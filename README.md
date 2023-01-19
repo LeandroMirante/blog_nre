@@ -38,13 +38,15 @@ retornados
 
 **/articles/id/** -> retorna um artigo pelo id do mesmo
 
-**/articles/search/?q=query&classify=most_views** -> endpoint para pesquisa, o parâmentro 'q' é query da pesquisa, e o parâmetro 'classify' é usado para classificar os artigos.
+**/articles/search/?q=query&classify=most_views&category=id** -> endpoint para pesquisa, o parâmentro 'q' é query da pesquisa, e o parâmetro 'classify' é usado para classificar os artigos.
 O parâmetro 'classify' pode ser entre as seguintes opções:
 - classify=most_recent -> retorna a pesquisa ordenado pelos artigos mais recentes 
 - classify=top_rated -> retorna a pesquisa ordenado pelos artigos com mais avaliações
 - classify=best_rated -> retorna a pesquisa ordenado pelos artigos com melhores avaliações
 - classify=older -> retorna a pesquisa ordenado pelos artigos mais antigos
 - classify=most_views -> retorna a pesquisa ordenado pelos artigos mais visualizados
+
+O parâmetro 'category' filtra os resultados pelo id da categoria.
 
 **/articles/id/delete/** -> usado para deletar um artigo pelo id
 
