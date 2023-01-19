@@ -4,11 +4,11 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r"category", views.CategoryViewSet)
+router.register(r"", views.CategoryViewSet)
 
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("category/", include(router.urls)),
     path("<int:pk>/", views.ArticleDetailAPIView.as_view(), name="article-detail"),
     path(
         "<int:pk>/update/", views.ArticleUpdateAPIView.as_view(), name="article-update"

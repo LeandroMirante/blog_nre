@@ -7,7 +7,7 @@ def get_client():
     return algolia_engine.client
 
 
-def get_index(index_name="Article", classify=None):
+def get_index(index_name="Article", classify=None, category=None):
     client = get_client()
     index = client.init_index(index_name)
     articles = Article.objects.all()
@@ -23,12 +23,12 @@ def get_index(index_name="Article", classify=None):
         index.set_settings({"ranking": ["desc(average_rating)"]})
     if classify == "most_views":
         index.set_settings({"ranking": ["desc(view_count)"]})
-    print(classify)
     index.save_objects(serializer.data)
+    print(index.get_objects([1]))
     return index
 
 
-def perform_search(query, classify=None, **kwargs):
-    index = get_index("Article", classify)
+def perform_search(query, classify=None, category=None, **kwargs):
+    index = get_index("Article", classify, category)
     results = index.search(query)
     return results

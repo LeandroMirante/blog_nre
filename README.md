@@ -30,7 +30,9 @@
 
 **/api/login/** -> retorna o token do usuário logado
 
-**/articles/** -> feed de artigos ordenados pelos mais recentes
+**/articles/?categoty=id/** -> feed de artigos ordenados pelos mais recentes,
+pode ser usado o parâmetro "category" para informar o id da categoria dos artigos a serem
+retornados
 
 **/articles/create/** -> cria um artigo e associa o campo "author" com o usuário logado
 

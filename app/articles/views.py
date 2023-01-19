@@ -19,9 +19,10 @@ class SearchListView(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         query = request.GET.get("q")
         classify = request.GET.get("classify")
-        if not query:
+        category = request.GET.get("category")
 
-            result = client.perform_search("", classify)
+        if not query:
+            result = client.perform_search("", classify, category)
             return Response(result)
         result = client.perform_search(query, classify)
         return Response(result)
@@ -47,9 +48,14 @@ class ArticleCreateAPIView(generics.CreateAPIView):
 
 
 class ArticleListAPIView(generics.ListAPIView):
-    queryset = Article.objects.all().order_by("-created_at")
     serializer_class = ArticleSerializer
 
+    def get_queryset(self):
+            queryset = Article.objects.all().order_by("-created_at")
+            category = self.request.GET.get('category')
+            if category:
+                queryset = queryset.filter(category=category)
+            return queryset
 
 class ArticleDetailAPIView(generics.RetrieveAPIView):
     queryset = Article.objects.all()
