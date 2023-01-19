@@ -26,6 +26,7 @@ class ArticleSerializerCreate(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     author = serializers.SerializerMethodField()
     category = serializers.SerializerMethodField()
+    category_id = serializers.SerializerMethodField()
     # url = serializers.HyperlinkedIdentityField(
     #         view_name='article-detail',
     #         lookup_field='pk'
@@ -43,6 +44,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             "objectID",
             "author",
             "category",
+            "category_id",
             "title",
             "description",
             "file",
@@ -63,6 +65,11 @@ class ArticleSerializer(serializers.ModelSerializer):
     def get_category(self, obj):
         if obj.category is not None:
             return obj.category.name
+        return None
+
+    def get_category_id(self, obj):
+        if obj.category is not None:
+            return obj.category.pk
         return None
 
     def get_created_at(self, obj):

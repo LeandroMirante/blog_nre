@@ -1,6 +1,6 @@
 from algoliasearch_django import algolia_engine
 from app.articles.serializers import ArticleSerializer
-from app.articles.models import Article
+from app.articles.models import Article, Category
 
 
 def get_client():
@@ -23,12 +23,18 @@ def get_index(index_name="Article", classify=None, category=None):
         index.set_settings({"ranking": ["desc(average_rating)"]})
     if classify == "most_views":
         index.set_settings({"ranking": ["desc(view_count)"]})
+    index.set_settings({'attributesToHighlight':[]})
     index.save_objects(serializer.data)
-    print(index.get_objects([1]))
     return index
 
 
 def perform_search(query, classify=None, category=None, **kwargs):
     index = get_index("Article", classify, category)
-    results = index.search(query)
+    if category:
+        results = index.search(query, {
+            'filters': f'category_id = {category}',
+            'hitsPerPage': 10
+        })
+    else:
+        results = index.search(query)
     return results
