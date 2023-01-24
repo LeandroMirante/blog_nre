@@ -153,8 +153,8 @@ EMAIL_HOST_USER = "leandro.mirantexd@gmail.com"
 EMAIL_HOST_PASSWORD = "finaqtyahbivikoa"
 
 ALGOLIA = {
-    "APPLICATION_ID": "JNY8YMPX3K",
-    "API_KEY": "a9edfe777bf9793937841c31494c2e0a",
+    "APPLICATION_ID": "Your Aplication ID",
+    "API_KEY": "Your API Key",
 }
 
 SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": timedelta(minutes=60)}
