@@ -20,6 +20,18 @@
 - Crie um superuser: `python manage.py createsuperuser`;
 - Run the server: `python manage.py runserver`.
 
+## Detalhes da aplicação
+
+- Organização de pastas
+- Configuração de usuários personalizada
+- Usuário pode alterar suas informações
+- Os artigos criados são associados ao usuário que criou o artigo pelo campo "author", de forma que somente ele possa editar ou excluir o artigo.
+- As categorias disponíveis dos artigos são cadastradas pelo admin do site, é possível cadastrar quantas categorias desejar.
+- Sistema de busca e filtros disponíveis (inclusive por categoria)
+- Os artigos podem ser classificados por Mais recentes, Mais avaliados, Mais antigos, Mais bem avaliados ou Mais visualizados
+- Lógica para contagem de views encapsulada pelo Celery (tasks assíncronas)
+- Testes unitários utilizando o Pytest para todas as funcionalidades
+
 ## Endpoints
 
 **/docs/** -> Documentação com todos os endpoints
