@@ -8,7 +8,9 @@
 - Ative o ambiente virtual venv `source venv/bin/activate`;
 - Instale o Poetry: `pip install poetry`;
 - Instale as dependências: `poetry install`
-- Configure o postgresql em config -> base.py -> DATABASES(variável)
+- Configure o postgresql em config -> settigns -> base.py -> DATABASES(variável)
+- Crie uma conta e configure o Algolia (Para pesquisa) em config -> settings -> base.py conforme os docs do algolia: https://www.algolia.com/doc/framework-integration/django/setup/?client=python
+- Rode "python manage.py algolia_reindex" no terminal.
 - Ative o servidor RabbitMQ para rodar o Celery
 - Ative o Celery através do comando: 
 
